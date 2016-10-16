@@ -1,7 +1,7 @@
 
 /*Basic script for creating the dynamic table*/
 
-function createTable()
+ createTable()
 {
 	var table = document.getElementById("tableID");
 
@@ -13,11 +13,14 @@ function createTable()
 	//Add some text to the new cells;
 	cell1.innerHTML = "NEW CELL1";
 	cell2.innerHTML = "NEW CELL2";
+	
+	table.append(row);
+	document.append(table);
 }
 
-$(function deleteRow()
+deleteRow()
 {
 
 	document.getElementById("tableID").deleteRow(this);//originally 0	
 
-});
+}

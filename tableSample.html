@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<body>
+</body>
+<div id ="dtable">
+	
+</div>
+<input type="button" onclick="Javascript:createTable()" value = "CLICK HERE PLZ!"><script type="text/javascript">
+	function createTable()
+	{
+		var table = createElement("TABLE");
+		table.border = "1";
+		
+		var tableBody = document.createElement("TBODY");
+		table.appendChild(tableBody);
+		
+		var tr = document.createElement("TR");
+		var td = document.createElement("TD");
+		//var row = table.insertRow(0);
+		td.appendChild(document.createTextNode("Cell blah"));
+		tr.appendChild(td);
+		//var cell1 = row.insertCell(0);
+		//cell1.innerHTML = "CEll 1";
+		
+		var row = table.insertRow(0);
+		row.insertCell(0).innerHTML = "MY CELL";
+		
+		document.getElementById("dtable").appendChild(table);
+		
+		
+	}
+</script>	
+
+
+
+
+
+
+</html>
