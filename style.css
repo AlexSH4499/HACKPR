@@ -1,5 +1,6 @@
 table{
 	position: relative;
+	padding-top: 10%;
 	text-align: center;
 }
 table tr:nth-child(even){
@@ -23,6 +24,35 @@ th,td{
 
 }
 
+/* Main site body */
+.wrapper {
+    width: 940px;
+    margin: 0 auto;
+    position: relative; /* Ensure absolute positioned child elements are relative to this */
+}
+
+/* Absolute positioned wrapper for the element you want to fix position */
+.fixed-wrapper {
+    width: 220px;
+    position: absolute;
+    top: 0;
+    left: -240px; /* Move this out to the left of the site body, leaving a 20px gutter */
+}
+
+/* The element you want to fix the position of */
+.fixed {
+    width: 220px;
+    position: absolute;
+    left: 7%;
+    padding: 10px;  
+    overflow: auto;
+    /* Do not set top / left! */
+}
+button{
+	padding-top: 10%;
+	
+}
+
 ul{
 	position:fixed;
 	border: 1px solid #e7e7e7;
@@ -34,7 +64,7 @@ ul{
 	background-color: #9900cc;
 	overflow:hidden;
 	width: 100%;
-	height: 10%;
+	height: 5%;
 	font-weight: bold;
 }
 
@@ -46,6 +76,10 @@ li{
 li a{
 	color: white;
 	padding-top:5%;
+}
+
+li:first-child{
+	border-right: 1px solid white;
 }
 
 li:last-child{

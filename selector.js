@@ -1,4 +1,4 @@
- createSelector()
+function createSelector()
 {
 	//var csv = document.getElementById("CSV");
 	var myDiv = document.getElementById("optionSelector");
@@ -14,7 +14,7 @@
 	//Create and append the options
 	for(var i = 0; i < array.length;i++)
 	{
-		var option = document.createElement("option");
+		var option = document.createElement("OPTION");
 		option.value = array[i]; 
 		option.text = array[i];
 		selectList.appendChild(option);
@@ -26,8 +26,8 @@
 */
 }
 
-$(createArray(csv)
+function createArray(csv)
 {
 	var array= $.csv.toArrays(csv);
 	return array;
-});
+}

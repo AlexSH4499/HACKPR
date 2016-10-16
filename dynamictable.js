@@ -1,6 +1,6 @@
 
 /*Basic script for creating the dynamic table*/
-
+/*
  createTable()
 {
 	var table = document.getElementById("tableID");
@@ -16,7 +16,7 @@
 	
 	table.append(row);
 	document.append(table);
-}
+}*/
 
 deleteRow()
 {
