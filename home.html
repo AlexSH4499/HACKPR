@@ -85,8 +85,8 @@
 						    <option value="58">Beer</option>
 						    <option value="59">Wine</option>
                                                 </select> 
-						<input type ="button" id = "TableDeleteButton" value ="Create Table" onClick="createTable()">
-			<input type ="button" id = "Add Item To list" value= "Confirm " onClick="addValueToTable()">
+						<input type ="button" id = "TableDeleteButton" value ="Choose Item" onClick="createTable()">
+			<!--<input type ="button" id = "Add Item To list" value= "Confirm " onClick="addValueToTable()">-->
 		</div>
 		
 	</div>
@@ -100,7 +100,7 @@
 	<table id = "tableTotal" style="width: 100%; height: 45%">
 		<tr>
 			<th>Total</th>
-			<th>$0.00</th>
+			<th id="totalCost">$0.00</th>
 		</tr>
 	</table>
 </div>
@@ -311,23 +311,50 @@
 <!--<script type= "text/javascript" src="dynamictable.js"></script>-->
 <script type="text/javascript" src="rangeslider.js"></script> 
 <script type="text/javascript" src="coli.js"></script>
-<script src="js/accounting.min.js" type="text/javascript"></script>
+<script type="text/javascript"src="accounting.min.js"> </script>
 <script type="text/javascript"> 
 
+$(document).ready(function() {
+    $("#button").bind('click', function(){
+        //Get all words from list
+        var list = [];
+        $("#dll_state option").each(function(){
+            list.push($(this).val());
+        });
+        //var list = $( "#dll_state option" ).val();
+        console.log(list);
+        $.getJSON($SCRIPT_ROOT + '/_array2python', {
+            wordlist: JSON.stringify(list)
+        }, function(data){
+            console.log(data.result)
+            $( "#result" ).text(data.result);//don't do shit here xD
+        });
+        return false;
+    });
+});
  function createTable()
 {
 	var table = document.getElementById("tableID");
+	var prodList = document.getElementById("produce-list");
+      //  var listChildren = prodList.childNodes;
 	var row = table.insertRow(0);
-
-	
+	var value = prodList.options[prodList.selectedIndex].value;
+	var text = prodList.options[prodList.selectedIndex].text;
+/*	for(let child of listChildren)
+	{
+		if(child.selected> 0)
+		{
+			
+		}
+	}	*/
 
 	var cell1 = row.insertCell(0);
 	var cell2 = row.insertCell(1);
 	var cell3 = row.insertCell(2);
 
 	//Add some text to the new cells
-	cell1.innerHTML = "product";// to be changed with product.value
-	cell2.innerHTML = "price";//same as above
+	cell1.innerHTML =  text;// to be changed with product.value
+	cell2.innerHTML = value;//same as above
 	cell3.innerHTML = '<input type="button" value="delete" onclick="deleteRow(this)">' ;
 	//table.appendChild(row);
 	
@@ -362,7 +389,7 @@
 function addRow()
 {	/*Add Actual Id's to be used*/
 	var list = document.getElementById("")
-	var product = document.getElementByValue();
+	var product = document.getElementById("produce-list");
 	var price = document.getElementById("");
 	var table = document.getElementById("tableID");
 
@@ -382,23 +409,27 @@ function deleteRow(obj)
 	table.deleteRow(index);
 }
 
-function addValueToTable(obj)
+/*
+function addValueToTable()
 {
-	var value = obj.value;
+	var val = document.getElementById("produce-list").value;
 
-	return value;
-}
+	return val;
+}*/
 </script>
 
 <script type="text/javascript"> 
+
 /**We'll use this to traverse the list as it gets created*/
 	function loopThroughList()
 	{
-		var div = document.getElementById("tableID");
-		var divChildren = div.childNodes;// gets the child of the associated ID
-		for(var index = 0; index < divChildren.length;i++)
+		var arr = [];
+		var divTable = document.getElementById("tableID");
+		var divChildren = divTable.childNodes;// gets the child of the associated ID
+		for(let child of divChildren)
 		{
-				
+			
+				arr[divChildren.length-2] = 1;
 		}
 		
 		

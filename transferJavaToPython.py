@@ -1,6 +1,15 @@
 #We assign value gained from jscript
 import sys
-import cgitb
+from flask import Flask
+
+app=Flask(__name__,method['GET'])
+@app.route('/coli')
+def hello():
+	return 'Hello World'
+app.run(port = 8080)
+#if __name__ == "__main__":
+#	app.run(port = 8080)
+
 
 json_string = '["a","b",null,null,"e"]'  # passed from JavaScript
 
@@ -11,7 +20,7 @@ except(ImportError):
 
 result = json.loads(json_string)
 #prints resulting string
-print repr(result)
+#print repr(result)
 
 def loadJSON():
 	cgit.enable()
@@ -19,3 +28,5 @@ def loadJSON():
 	output = json.load(input)
 	json.dump(output, sys.stdout)
 	print repr(result)
+
+
